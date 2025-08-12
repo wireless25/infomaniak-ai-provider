@@ -1,0 +1,12 @@
+.DS_Store
+.cache
+.env
+.envrc
+.turbo
+dist
+node_modules
+test-results
+tsconfig.vitest-temp.json
+*.log
+*.local
+*.tsbuildinfo
