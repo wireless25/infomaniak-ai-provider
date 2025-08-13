@@ -1,45 +1,49 @@
+import type { OpenAICompatibleProviderSettings } from '@ai-sdk/openai-compatible'
 import type { OpenAICompatibleChatConfig } from '@ai-sdk/openai-compatible/internal'
-import type { LanguageModelV2 } from '@ai-sdk/provider'
-import type { InfomaniakChatModelId } from './infomaniak-chat-settings'
+import type { EmbeddingModelV2, LanguageModelV2 } from '@ai-sdk/provider'
+import type { InfomaniakChatModelId, InfomaniakEmbeddingModelId } from './infomaniak-models'
 import {
   OpenAICompatibleChatLanguageModel,
+  OpenAICompatibleEmbeddingModel,
 } from '@ai-sdk/openai-compatible'
 import {
   loadApiKey,
   loadSetting,
-  withoutTrailingSlash,
 } from '@ai-sdk/provider-utils'
 
 export interface InfomaniakProviderSettings {
   /**
-  Infomaniak API key.
+  API key for authenticating requests. If specified, adds an `Authorization`
+  header to request headers with the value `Bearer <apiKey>`. This will be added
+  before any headers potentially specified in the `headers` option. Defaults to
+  `INFOMANIAK_API_KEY` env variable
    */
-  apiKey?: string
-  /**
-  Base URL for the API calls.
-   */
-  baseURL?: string
+  apiKey?: OpenAICompatibleProviderSettings['apiKey']
   /**
   Custom headers to include in the requests.
    */
-  headers?: Record<string, string>
+  headers?: OpenAICompatibleProviderSettings['headers']
   /**
-   * Infomaniak API version.
-   */
-  apiVersion?: string
-  /**
-   * Infomaniak product ID.
+  Infomaniak product ID.
    */
   productId?: string
+  /**
+  Custom fetch implementation. You can use it as a middleware to intercept requests,
+  or to provide a custom fetch implementation for e.g. testing.
+   */
+  fetch?: OpenAICompatibleProviderSettings['fetch']
+  /**
+  Include usage information in streaming responses.
+   */
+  includeUsage?: OpenAICompatibleProviderSettings['includeUsage']
 }
 
 export interface InfomaniakProvider {
-  /**
-  Creates a model for text generation.
-   */
-  (
-    modelId: InfomaniakChatModelId,
-  ): LanguageModelV2
+  (modelId: InfomaniakChatModelId): LanguageModelV2
+  languageModel: (modelId: InfomaniakChatModelId) => LanguageModelV2
+  chatModel: (modelId: InfomaniakChatModelId) => LanguageModelV2
+  textEmbeddingModel: (modelId: InfomaniakEmbeddingModelId) => EmbeddingModelV2<string>
+  // imageModel: (modelId: InfomaniakImageModelId) => ImageModelV2
 }
 
 export function createInfomaniak(
@@ -51,9 +55,7 @@ export function createInfomaniak(
     description: 'Infomaniak product ID',
     settingValue: options.productId,
   })
-  const baseURL = withoutTrailingSlash(
-    options.baseURL ?? `https://api.infomaniak.com/1/ai/${productId}/openai`,
-  )
+  const baseURL = `https://api.infomaniak.com/1/ai/${productId}/openai`
   const getHeaders = () => ({
     Authorization: `Bearer ${loadApiKey({
       apiKey: options.apiKey,
@@ -77,11 +79,23 @@ export function createInfomaniak(
   ) => {
     return new OpenAICompatibleChatLanguageModel(
       modelId,
-      getCommonModelConfig('chat'),
+      { ...getCommonModelConfig('chat'), includeUsage: options.includeUsage ?? false },
+    )
+  }
+
+  const createTextEmbeddingModel = (
+    modelId: InfomaniakEmbeddingModelId,
+  ) => {
+    return new OpenAICompatibleEmbeddingModel(
+      modelId,
+      { ...getCommonModelConfig('text_embedding') },
     )
   }
 
   const provider = (modelId: InfomaniakChatModelId) => createChatModel(modelId)
+  provider.chatModel = createChatModel
+  provider.languageModel = createChatModel
+  provider.textEmbeddingModel = createTextEmbeddingModel
 
   return provider
 }
