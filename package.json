@@ -34,15 +34,17 @@
     "node": ">=18"
   },
   "scripts": {
-    "build": "pnpm clean && tsup",
-    "build:watch": "pnpm clean && tsup --watch",
+    "build": "pnpm clean && generate-types && tsup",
+    "build:watch": "pnpm clean && generate-types && tsup --watch",
     "clean": "rm -rf dist *.tsbuildinfo",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    "generate-types": "pnpx tsx scripts/generate-types.ts",
     "typecheck": "tsc --noEmit",
     "test:update": "pnpm test:node -u",
     "test:watch": "vitest",
-    "test": "vitest --run"
+    "test": "vitest --run",
+    "postinstall": "pnpm generate-types"
   },
   "peerDependencies": {
     "zod": "^3.25.76 || ^4"
@@ -55,6 +57,7 @@
   "devDependencies": {
     "@antfu/eslint-config": "^5.2.1",
     "@types/node": "20.17.24",
+    "dotenv": "^17.2.1",
     "eslint": "^9.33.0",
     "tsup": "^8",
     "typescript": "5.8.3",
