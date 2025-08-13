@@ -44,6 +44,7 @@
     "test:update": "pnpm test:node -u",
     "test:watch": "vitest",
     "test": "vitest --run",
+    "release": "pnpx changelogen@latest --release && pnpm publish",
     "postinstall": "pnpm generate-types"
   },
   "peerDependencies": {
