@@ -1,6 +1,6 @@
 {
   "name": "infomaniak-ai-provider",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "packageManager": "pnpm@10.14.0",
   "license": "Apache-2.0",
   "repository": {
@@ -34,7 +34,7 @@
     "node": ">=18"
   },
   "scripts": {
-    "build": "pnpm clean && generate-types && tsup",
+    "build": "pnpm clean && tsup",
     "build:watch": "pnpm clean && generate-types && tsup --watch",
     "clean": "rm -rf dist *.tsbuildinfo",
     "lint": "eslint .",

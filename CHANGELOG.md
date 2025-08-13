@@ -1,4 +1,31 @@
 
+## v0.1.2
+
+[compare changes](https://github.com/wireless25/infomaniak-ai-provider/compare/v0.1.1...v0.1.2)
+
+### 🚀 Enhancements
+
+- Add text embedding - add text embedding - use generated types - extended provider settings ([9b3f5e7](https://github.com/wireless25/infomaniak-ai-provider/commit/9b3f5e7))
+
+### 🩹 Fixes
+
+- Export propper types ([f340425](https://github.com/wireless25/infomaniak-ai-provider/commit/f340425))
+
+### 🌊 Types
+
+- Remove obsolete type files ([14b809c](https://github.com/wireless25/infomaniak-ai-provider/commit/14b809c))
+
+### 🏡 Chore
+
+- Autogenerate types from models endpoint ([40282cd](https://github.com/wireless25/infomaniak-ai-provider/commit/40282cd))
+- **release:** V0.1.1 ([7aea9d6](https://github.com/wireless25/infomaniak-ai-provider/commit/7aea9d6))
+- Add release script ([1b5d4e1](https://github.com/wireless25/infomaniak-ai-provider/commit/1b5d4e1))
+- Build during release ([370e64a](https://github.com/wireless25/infomaniak-ai-provider/commit/370e64a))
+
+### ❤️ Contributors
+
+- Stephan Simonett ([@wireless25](https://github.com/wireless25))
+
 ## v0.1.1
 
 
