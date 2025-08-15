@@ -49,13 +49,13 @@ export interface InfomaniakProvider {
 export function createInfomaniak(
   options: InfomaniakProviderSettings = {},
 ): InfomaniakProvider {
-  const productId = loadSetting({
+  const getProductId = () => loadSetting({
     environmentVariableName: 'INFOMANIAK_PRODUCT_ID',
     settingName: 'productId',
     description: 'Infomaniak product ID',
     settingValue: options.productId,
   })
-  const baseURL = `https://api.infomaniak.com/1/ai/${productId}/openai`
+  const getApiUrl = () => `https://api.infomaniak.com/1/ai/${getProductId()}/openai`
   const getHeaders = () => ({
     Authorization: `Bearer ${loadApiKey({
       apiKey: options.apiKey,
@@ -68,7 +68,7 @@ export function createInfomaniak(
   const getCommonModelConfig = (modelType: string): OpenAICompatibleChatConfig => ({
     provider: `infomaniak.${modelType}`,
     url: ({ path }) => {
-      const url = new URL(`${baseURL}${path}`)
+      const url = new URL(`${getApiUrl()}${path}`)
       return url.toString()
     },
     headers: getHeaders,
