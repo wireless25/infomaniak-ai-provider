@@ -166,7 +166,7 @@ async function main() {
 
     // Also save raw data for reference
     const dataPath = path.join(outputDir, 'infomaniak-models-data.json')
-    fs.writeFileSync(dataPath, JSON.stringify(modelsData, null, 2))
+    fs.writeFileSync(dataPath, `${JSON.stringify(modelsData, null, 2)}\n`)
     console.log(`📄 Raw data saved at ${dataPath}`)
   }
   catch (error) {
