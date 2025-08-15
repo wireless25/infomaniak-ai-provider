@@ -1,4 +1,16 @@
 
+## v0.0.2
+
+[compare changes](https://github.com/wireless25/infomaniak-ai-provider/compare/v0.1.3...v0.0.2)
+
+### 🚀 Enhancements
+
+- Backwards compatible version with ai@4 ([2f6a7d4](https://github.com/wireless25/infomaniak-ai-provider/commit/2f6a7d4))
+
+### ❤️ Contributors
+
+- Stephan Simonett ([@wireless25](https://github.com/wireless25))
+
 ## v0.1.3
 
 [compare changes](https://github.com/wireless25/infomaniak-ai-provider/compare/v0.1.2...v0.1.3)
