@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@hono/node-server": "1.13.7",
-    "ai": "latest",
+    "ai": "^4.3.19",
     "dotenv": "16.4.5",
     "hono": "4.6.9",
     "infomaniak-ai-provider": "workspace:*"

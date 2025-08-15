@@ -1,6 +1,6 @@
 import type { OpenAICompatibleProviderSettings } from '@ai-sdk/openai-compatible'
 import type { OpenAICompatibleChatConfig } from '@ai-sdk/openai-compatible/internal'
-import type { EmbeddingModelV2, LanguageModelV2 } from '@ai-sdk/provider'
+import type { EmbeddingModelV1, LanguageModelV1 } from '@ai-sdk/provider'
 import type { InfomaniakChatModelId, InfomaniakEmbeddingModelId } from './infomaniak-models'
 import {
   OpenAICompatibleChatLanguageModel,
@@ -32,18 +32,14 @@ export interface InfomaniakProviderSettings {
   or to provide a custom fetch implementation for e.g. testing.
    */
   fetch?: OpenAICompatibleProviderSettings['fetch']
-  /**
-  Include usage information in streaming responses.
-   */
-  includeUsage?: OpenAICompatibleProviderSettings['includeUsage']
 }
 
 export interface InfomaniakProvider {
-  (modelId: InfomaniakChatModelId): LanguageModelV2
-  languageModel: (modelId: InfomaniakChatModelId) => LanguageModelV2
-  chatModel: (modelId: InfomaniakChatModelId) => LanguageModelV2
-  textEmbeddingModel: (modelId: InfomaniakEmbeddingModelId) => EmbeddingModelV2<string>
-  // imageModel: (modelId: InfomaniakImageModelId) => ImageModelV2
+  (modelId: InfomaniakChatModelId): LanguageModelV1
+  languageModel: (modelId: InfomaniakChatModelId) => LanguageModelV1
+  chatModel: (modelId: InfomaniakChatModelId) => LanguageModelV1
+  textEmbeddingModel: (modelId: InfomaniakEmbeddingModelId) => EmbeddingModelV1<string>
+  // imageModel: (modelId: InfomaniakImageModelId) => ImageModelV1
 }
 
 export function createInfomaniak(
@@ -79,7 +75,8 @@ export function createInfomaniak(
   ) => {
     return new OpenAICompatibleChatLanguageModel(
       modelId,
-      { ...getCommonModelConfig('chat'), includeUsage: options.includeUsage ?? false },
+      {},
+      { ...getCommonModelConfig('chat') },
     )
   }
 
@@ -88,6 +85,7 @@ export function createInfomaniak(
   ) => {
     return new OpenAICompatibleEmbeddingModel(
       modelId,
+      {},
       { ...getCommonModelConfig('text_embedding') },
     )
   }
