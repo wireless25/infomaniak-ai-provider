@@ -1,4 +1,21 @@
 
+## v0.1.3
+
+[compare changes](https://github.com/wireless25/infomaniak-ai-provider/compare/v0.1.2...v0.1.3)
+
+### 🩹 Fixes
+
+- Load settings on usage instead of init ([06512ec](https://github.com/wireless25/infomaniak-ai-provider/commit/06512ec))
+
+### 🏡 Chore
+
+- Remove postinstall for types ([b99f550](https://github.com/wireless25/infomaniak-ai-provider/commit/b99f550))
+- Init dev playground ([fa26816](https://github.com/wireless25/infomaniak-ai-provider/commit/fa26816))
+
+### ❤️ Contributors
+
+- Stephan Simonett ([@wireless25](https://github.com/wireless25))
+
 ## v0.1.2
 
 [compare changes](https://github.com/wireless25/infomaniak-ai-provider/compare/v0.1.1...v0.1.2)
