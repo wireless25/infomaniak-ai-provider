@@ -86,7 +86,13 @@ export function createInfomaniak(
     return new OpenAICompatibleEmbeddingModel(
       modelId,
       {},
-      { ...getCommonModelConfig('text_embedding') },
+      {
+        ...getCommonModelConfig('text_embedding'),
+        url: ({ path }) => {
+          const url = new URL(`${getApiUrl()}/v1${path}`) // random versioning in url for embeddings https://developer.infomaniak.com/docs/api/post/1/ai/%7Bproduct_id%7D/openai/v1/embeddings
+          return url.toString()
+        },
+      },
     )
   }
 
