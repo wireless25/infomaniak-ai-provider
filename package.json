@@ -35,7 +35,7 @@
   },
   "scripts": {
     "build": "pnpm clean && tsup",
-    "build:watch": "pnpm clean && generate-types && tsup --watch",
+    "build:watch": "pnpm clean && pnpm generate-types && tsup --watch",
     "clean": "rm -rf dist *.tsbuildinfo",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",

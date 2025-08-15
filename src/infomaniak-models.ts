@@ -1,5 +1,5 @@
 // Generated types for Infomaniak AI Models
-// Last updated: 2025-08-13T18:55:22.991Z
+// Last updated: 2025-08-15T09:46:17.385Z
 // Do not change this file, it will be regenerated automatically
 
 export type ModelType = 'stt' | 'llm' | 'image' | 'embedding'
@@ -7,37 +7,37 @@ export type ModelType = 'stt' | 'llm' | 'image' | 'embedding'
 export type InfoStatus = 'ready' | 'coming_soon'
 
 // Model ID unions by type
-export type InfomaniakSTTModelId = 
-  | 'whisper'
-  | 'whisperV2'
-  | (string & {})
+export type InfomaniakSTTModelId
+  = | 'whisper'
+    | 'whisperV2'
+    | (string & {})
 
-export type InfomaniakChatModelId = 
-  | 'llama3'
-  | 'granite'
-  | 'reasoning'
-  | 'mistral24b'
-  | 'mistral3'
-  | 'qwen3'
-  | 'gemma3n'
-  | (string & {})
+export type InfomaniakChatModelId
+  = | 'llama3'
+    | 'granite'
+    | 'reasoning'
+    | 'mistral24b'
+    | 'mistral3'
+    | 'qwen3'
+    | 'gemma3n'
+    | (string & {})
 
-export type InfomaniakImageModelId = 
-  | 'photomaker'
-  | 'flux'
-  | (string & {})
+export type InfomaniakImageModelId
+  = | 'photomaker'
+    | 'flux'
+    | (string & {})
 
-export type InfomaniakEmbeddingModelId = 
-  | 'bge_multilingual_gemma2'
-  | 'mini_lm_l12_v2'
-  | (string & {})
+export type InfomaniakEmbeddingModelId
+  = | 'bge_multilingual_gemma2'
+    | 'mini_lm_l12_v2'
+    | (string & {})
 
 // All model IDs union
-export type InfomaniakModelId = 
-  | InfomaniakSTTModelId
-  | InfomaniakChatModelId
-  | InfomaniakImageModelId
-  | InfomaniakEmbeddingModelId
+export type InfomaniakModelId
+  = | InfomaniakSTTModelId
+    | InfomaniakChatModelId
+    | InfomaniakImageModelId
+    | InfomaniakEmbeddingModelId
 
 export interface InfomaniakModel {
   description: string
@@ -68,26 +68,30 @@ export const MODEL_NAMES = {
   MISTRAL24B: 'mistral24b' as const,
   MISTRAL3: 'mistral3' as const,
   QWEN3: 'qwen3' as const,
-  GEMMA3N: 'gemma3n' as const
+  GEMMA3N: 'gemma3n' as const,
 } as const
 
 // Helper functions
-export const getModelsByType = <T extends ModelType>(
-  models: InfomaniakModels, 
-  type: T
-): InfomaniakModel[] => models.filter(model => model.type === type)
+export function getModelsByType<T extends ModelType>(models: InfomaniakModels, type: T): InfomaniakModel[] {
+  return models.filter(model => model.type === type)
+}
 
-export const getReadyModels = (models: InfomaniakModels): InfomaniakModel[] =>
-  models.filter(model => model.info_status === 'ready')
+export function getReadyModels(models: InfomaniakModels): InfomaniakModel[] {
+  return models.filter(model => model.info_status === 'ready')
+}
 
-export const getSTTModels = (models: InfomaniakModels) => 
-  getModelsByType(models, 'stt')
+export function getSTTModels(models: InfomaniakModels): InfomaniakModel[] {
+  return getModelsByType(models, 'stt')
+}
 
-export const getChatModels = (models: InfomaniakModels) => 
-  getModelsByType(models, 'llm')
+export function getChatModels(models: InfomaniakModels): InfomaniakModel[] {
+  return getModelsByType(models, 'llm')
+}
 
-export const getImageModels = (models: InfomaniakModels) => 
-  getModelsByType(models, 'image')
+export function getImageModels(models: InfomaniakModels): InfomaniakModel[] {
+  return getModelsByType(models, 'image')
+}
 
-export const getEmbeddingModels = (models: InfomaniakModels) => 
-  getModelsByType(models, 'embedding')
+export function getEmbeddingModels(models: InfomaniakModels): InfomaniakModel[] {
+  return getModelsByType(models, 'embedding')
+}

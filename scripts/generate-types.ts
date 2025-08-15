@@ -118,24 +118,25 @@ export type InfomaniakModels = InfomaniakModel[]
 
 // Model name constants for easy access
 export const MODEL_NAMES = {
-${modelsData.map(m => `  ${m.name.toUpperCase()}: '${m.name}' as const`).join(',\n')}
+${modelsData.map(m => `  ${m.name.toUpperCase()}: '${m.name}' as const,`).join('\n')}
 } as const
 
 // Helper functions
-export const getModelsByType = <T extends ModelType>(
-  models: InfomaniakModels, 
-  type: T
-): InfomaniakModel[] => models.filter(model => model.type === type)
+export function getModelsByType<T extends ModelType>(models: InfomaniakModels, type: T): InfomaniakModel[] {
+  return models.filter(model => model.type === type)
+}
 
-export const getReadyModels = (models: InfomaniakModels): InfomaniakModel[] =>
-  models.filter(model => model.info_status === 'ready')
+export function getReadyModels(models: InfomaniakModels): InfomaniakModel[] {
+  return models.filter(model => model.info_status === 'ready')
+}
 
 ${Array.from(types).map((type) => {
   const typeName = typeNameMapping[type] || type.toUpperCase()
   const functionName = `get${typeName}Models`
 
-  return `export const ${functionName} = (models: InfomaniakModels) => 
-  getModelsByType(models, '${type}')`
+  return `export function ${functionName}(models: InfomaniakModels): InfomaniakModel[] {
+  return getModelsByType(models, '${type}')
+}`
 }).join('\n\n')}
 `
 

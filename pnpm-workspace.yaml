@@ -1,2 +1,5 @@
+packages:
+  - infomaniak-ai-provider
+  - playground
 onlyBuiltDependencies:
   - esbuild

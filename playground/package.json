@@ -1,0 +1,24 @@
+{
+  "name": "playground",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "dev:streaming": "tsx watch src/streaming.ts",
+    "curl": "curl -i -X POST http://localhost:8080/",
+    "curlstreaming": "curl -i -X POST http://localhost:3001/chat",
+    "type-check": "tsc --build"
+  },
+  "dependencies": {
+    "@hono/node-server": "1.13.7",
+    "ai": "latest",
+    "dotenv": "16.4.5",
+    "hono": "4.6.9",
+    "infomaniak-ai-provider": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "20.17.24",
+    "tsx": "4.19.2",
+    "typescript": "5.8.3"
+  }
+}
