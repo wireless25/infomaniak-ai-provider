@@ -1,5 +1,7 @@
 # AI SDK - Infomaniak Provider
 
+> the project is under active development, for now only text and embedding models are supported.
+
 The Infomaniak provider for the [AI SDK](https://ai-sdk.dev/docs) contains language model support for the [Infomaniak AI Tools API](https://www.infomaniak.com/en/hosting/ai-tools/open-source-models).
 
 ## Setup
