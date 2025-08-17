@@ -38,4 +38,11 @@ describe('infomaniak-provider', () => {
     expect(model.modelId).toBe('bge_multilingual_gemma2')
     expect(model.provider).toBe('infomaniak.text_embedding')
   })
+
+  it('should create an image model instance', () => {
+    const model = infomaniak.imageModel('flux')
+    expect(model).toBeDefined()
+    expect(model.modelId).toBe('flux')
+    expect(model.provider).toBe('infomaniak.image')
+  })
 })

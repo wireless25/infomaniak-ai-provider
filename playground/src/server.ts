@@ -1,6 +1,6 @@
 import type { InfomaniakProvider } from 'infomaniak-ai-provider'
 import { serve } from '@hono/node-server'
-import { embed, JsonToSseTransformStream, streamText } from 'ai'
+import { embed, experimental_generateImage, JsonToSseTransformStream, streamText } from 'ai'
 import { config } from 'dotenv'
 import { Hono } from 'hono'
 import { env } from 'hono/adapter'
@@ -8,6 +8,12 @@ import { stream } from 'hono/streaming'
 import { createInfomaniak } from 'infomaniak-ai-provider'
 
 config()
+
+// eslint-disable-next-line ts/consistent-type-definitions
+type Env = {
+  INFOMANIAK_API_KEY: string
+  INFOMANIAK_PRODUCT_ID: string
+}
 
 const app = new Hono()
 let infomaniak: InfomaniakProvider
@@ -23,7 +29,7 @@ function createInfomaniakProvider({ apiKey, productId }: { apiKey: string, produ
 }
 
 app.post('/', async (c) => {
-  const { INFOMANIAK_API_KEY, INFOMANIAK_PRODUCT_ID } = env<{ INFOMANIAK_API_KEY: string, INFOMANIAK_PRODUCT_ID: string }>(c)
+  const { INFOMANIAK_API_KEY, INFOMANIAK_PRODUCT_ID } = env<Env>(c)
   const infomaniak = createInfomaniakProvider({
     apiKey: INFOMANIAK_API_KEY,
     productId: INFOMANIAK_PRODUCT_ID,
@@ -33,15 +39,13 @@ app.post('/', async (c) => {
     prompt: 'Invent a new holiday and describe its traditions.',
   })
 
-  // Mark the response as a v1 data stream:
-  c.header('X-Vercel-AI-Data-Stream', 'v1')
   c.header('Content-Type', 'text/plain; charset=utf-8')
 
   return stream(c, stream => stream.pipe(result.toUIMessageStream()))
 })
 
 app.post('/stream-data', async (c) => {
-  const { INFOMANIAK_API_KEY, INFOMANIAK_PRODUCT_ID } = env<{ INFOMANIAK_API_KEY: string, INFOMANIAK_PRODUCT_ID: string }>(c)
+  const { INFOMANIAK_API_KEY, INFOMANIAK_PRODUCT_ID } = env<Env>(c)
   const infomaniak = createInfomaniakProvider({
     apiKey: INFOMANIAK_API_KEY,
     productId: INFOMANIAK_PRODUCT_ID,
@@ -60,11 +64,9 @@ app.post('/stream-data', async (c) => {
     },
   })
 
-  // Mark the response as a v2 data stream:
   c.header('content-type', 'text/event-stream')
   c.header('cache-control', 'no-cache')
   c.header('connection', 'keep-alive')
-  c.header('x-vercel-ai-data-stream', 'v2')
   c.header('x-accel-buffering', 'no') // disable nginx buffering
 
   return stream(c, stream =>
@@ -76,7 +78,7 @@ app.post('/stream-data', async (c) => {
 })
 
 app.post('/embed', async (c) => {
-  const { INFOMANIAK_API_KEY, INFOMANIAK_PRODUCT_ID } = env<{ INFOMANIAK_API_KEY: string, INFOMANIAK_PRODUCT_ID: string }>(c)
+  const { INFOMANIAK_API_KEY, INFOMANIAK_PRODUCT_ID } = env<Env>(c)
   const infomaniak = createInfomaniakProvider({
     apiKey: INFOMANIAK_API_KEY,
     productId: INFOMANIAK_PRODUCT_ID,
@@ -86,8 +88,6 @@ app.post('/embed', async (c) => {
     value: 'Invent a new holiday and describe its traditions.',
   })
 
-  // Mark the response as a v1 data stream:
-  c.header('X-Vercel-AI-Data-Stream', 'v1')
   c.header('Content-Type', 'text/plain; charset=utf-8')
 
   return new Response(JSON.stringify(result.embedding), {
@@ -95,6 +95,22 @@ app.post('/embed', async (c) => {
       'Content-Type': 'application/json',
     },
   })
+})
+
+app.post('/image', async (c) => {
+  const { INFOMANIAK_API_KEY, INFOMANIAK_PRODUCT_ID } = env<Env>(c)
+  const infomaniak = createInfomaniakProvider({
+    apiKey: INFOMANIAK_API_KEY,
+    productId: INFOMANIAK_PRODUCT_ID,
+  })
+  const result = await experimental_generateImage({
+    model: infomaniak.imageModel('flux'),
+    prompt: 'A VW camping bus parked in a scenic location, surrounded by mountains and trees. Comic style illustration.',
+  })
+
+  c.header('Content-Type', 'text/plain; charset=utf-8')
+
+  return new Response(JSON.stringify(result.image.base64))
 })
 
 serve({ fetch: app.fetch, port: 8080 })

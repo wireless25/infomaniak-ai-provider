@@ -1,15 +1,13 @@
 import type { OpenAICompatibleProviderSettings } from '@ai-sdk/openai-compatible'
-import type { OpenAICompatibleChatConfig } from '@ai-sdk/openai-compatible/internal'
-import type { EmbeddingModelV2, LanguageModelV2 } from '@ai-sdk/provider'
-import type { InfomaniakChatModelId, InfomaniakEmbeddingModelId } from './infomaniak-models'
+import type { EmbeddingModelV2, ImageModelV2, LanguageModelV2 } from '@ai-sdk/provider'
+import type { FetchFunction } from '@ai-sdk/provider-utils'
+import type { InfomaniakChatModelId, InfomaniakEmbeddingModelId, InfomaniakImageModelId } from './infomaniak-models'
 import {
   OpenAICompatibleChatLanguageModel,
   OpenAICompatibleEmbeddingModel,
+  OpenAICompatibleImageModel,
 } from '@ai-sdk/openai-compatible'
-import {
-  loadApiKey,
-  loadSetting,
-} from '@ai-sdk/provider-utils'
+import { loadApiKey, loadSetting } from '@ai-sdk/provider-utils'
 
 export interface InfomaniakProviderSettings {
   /**
@@ -43,7 +41,7 @@ export interface InfomaniakProvider {
   languageModel: (modelId: InfomaniakChatModelId) => LanguageModelV2
   chatModel: (modelId: InfomaniakChatModelId) => LanguageModelV2
   textEmbeddingModel: (modelId: InfomaniakEmbeddingModelId) => EmbeddingModelV2<string>
-  // imageModel: (modelId: InfomaniakImageModelId) => ImageModelV2
+  imageModel: (modelId: InfomaniakImageModelId) => ImageModelV2
 }
 
 export function createInfomaniak(
@@ -65,13 +63,21 @@ export function createInfomaniak(
     ...options.headers,
   })
 
-  const getCommonModelConfig = (modelType: string): OpenAICompatibleChatConfig => ({
+  interface CommonModelConfig {
+    provider: string
+    url: ({ path }: { path: string }) => string
+    headers: () => Record<string, string>
+    fetch?: FetchFunction
+  }
+
+  const getCommonModelConfig = (modelType: string): CommonModelConfig => ({
     provider: `infomaniak.${modelType}`,
     url: ({ path }) => {
       const url = new URL(`${getApiUrl()}${path}`)
       return url.toString()
     },
     headers: getHeaders,
+    fetch: options.fetch,
   })
 
   const createChatModel = (
@@ -98,10 +104,14 @@ export function createInfomaniak(
     )
   }
 
+  const createImageModel = (modelId: InfomaniakImageModelId) =>
+    new OpenAICompatibleImageModel(modelId, getCommonModelConfig('image'))
+
   const provider = (modelId: InfomaniakChatModelId) => createChatModel(modelId)
   provider.chatModel = createChatModel
   provider.languageModel = createChatModel
   provider.textEmbeddingModel = createTextEmbeddingModel
+  provider.imageModel = createImageModel
 
   return provider
 }
