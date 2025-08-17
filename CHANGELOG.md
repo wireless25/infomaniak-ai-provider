@@ -1,4 +1,20 @@
 
+## v0.1.6
+
+[compare changes](https://github.com/wireless25/infomaniak-ai-provider/compare/v0.1.5...v0.1.6)
+
+### 🚀 Enhancements
+
+- Add image model ([252c445](https://github.com/wireless25/infomaniak-ai-provider/commit/252c445))
+
+### 🏡 Chore
+
+- **release:** V0.1.5 ([f7aeb43](https://github.com/wireless25/infomaniak-ai-provider/commit/f7aeb43))
+
+### ❤️ Contributors
+
+- Stephan Simonett ([@wireless25](https://github.com/wireless25))
+
 ## v0.1.5
 
 [compare changes](https://github.com/wireless25/infomaniak-ai-provider/compare/list...v0.1.5)
