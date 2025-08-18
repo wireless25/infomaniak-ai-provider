@@ -1,4 +1,16 @@
 
+## v0.1.7
+
+[compare changes](https://github.com/wireless25/infomaniak-ai-provider/compare/v0.1.6...v0.1.7)
+
+### 🚀 Enhancements
+
+- Adding experimental support for transcription ([62e085d](https://github.com/wireless25/infomaniak-ai-provider/commit/62e085d))
+
+### ❤️ Contributors
+
+- Stephan Simonett ([@wireless25](https://github.com/wireless25))
+
 ## v0.1.6
 
 [compare changes](https://github.com/wireless25/infomaniak-ai-provider/compare/v0.1.5...v0.1.6)
