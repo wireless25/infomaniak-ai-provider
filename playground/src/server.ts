@@ -1,6 +1,6 @@
 import type { InfomaniakProvider } from 'infomaniak-ai-provider'
 import { serve } from '@hono/node-server'
-import { embed, experimental_generateImage, JsonToSseTransformStream, streamText } from 'ai'
+import { embed, experimental_generateImage, experimental_transcribe, JsonToSseTransformStream, streamText } from 'ai'
 import { config } from 'dotenv'
 import { Hono } from 'hono'
 import { env } from 'hono/adapter'
@@ -111,6 +111,31 @@ app.post('/image', async (c) => {
   c.header('Content-Type', 'text/plain; charset=utf-8')
 
   return new Response(JSON.stringify(result.image.base64))
+})
+
+app.post('/stt', async (c) => {
+  const { INFOMANIAK_API_KEY, INFOMANIAK_PRODUCT_ID } = env<Env>(c)
+  const infomaniak = createInfomaniakProvider({
+    apiKey: INFOMANIAK_API_KEY,
+    productId: INFOMANIAK_PRODUCT_ID,
+  })
+  const result = await experimental_transcribe({
+    model: infomaniak.transcription('whisper'),
+    audio: await c.req.arrayBuffer(),
+    providerOptions: {
+      infomaniak: {
+        timestampGranularities: ['segment', 'word'],
+      },
+    },
+  })
+
+  c.header('Content-Type', 'application/json')
+
+  return new Response(JSON.stringify(result), {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
 })
 
 serve({ fetch: app.fetch, port: 8080 })
