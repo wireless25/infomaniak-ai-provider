@@ -7,4 +7,11 @@ export default defineConfig([
     dts: true,
     sourcemap: true,
   },
+  {
+    entry: ['src/client/index.ts'],
+    outDir: 'dist/client',
+    format: ['cjs', 'esm'],
+    dts: true,
+    sourcemap: true,
+  },
 ])

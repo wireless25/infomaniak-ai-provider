@@ -4,7 +4,7 @@
 
 export type ModelType = 'stt' | 'llm' | 'image' | 'embedding'
 
-export type InfoStatus = 'ready' | 'coming_soon'
+export type InfoStatus = 'ready' | 'coming_soon' | (string & {})
 
 // Model ID unions by type
 export type InfomaniakSTTModelId
@@ -76,22 +76,22 @@ export function getModelsByType<T extends ModelType>(models: InfomaniakModels, t
   return models.filter(model => model.type === type)
 }
 
-export function getReadyModels(models: InfomaniakModels): InfomaniakModel[] {
+export function getReadyModels(models: InfomaniakModels): InfomaniakModels {
   return models.filter(model => model.info_status === 'ready')
 }
 
-export function getSTTModels(models: InfomaniakModels): InfomaniakModel[] {
+export function getTranscriptionModels(models: InfomaniakModels): InfomaniakModels {
   return getModelsByType(models, 'stt')
 }
 
-export function getChatModels(models: InfomaniakModels): InfomaniakModel[] {
+export function getChatModels(models: InfomaniakModels): InfomaniakModels {
   return getModelsByType(models, 'llm')
 }
 
-export function getImageModels(models: InfomaniakModels): InfomaniakModel[] {
+export function getImageModels(models: InfomaniakModels): InfomaniakModels {
   return getModelsByType(models, 'image')
 }
 
-export function getEmbeddingModels(models: InfomaniakModels): InfomaniakModel[] {
+export function getEmbeddingModels(models: InfomaniakModels): InfomaniakModels {
   return getModelsByType(models, 'embedding')
 }

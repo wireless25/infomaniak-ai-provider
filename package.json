@@ -21,6 +21,12 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
       "require": "./dist/index.js"
+    },
+    "./client": {
+      "types": "./dist/client/index.d.ts",
+      "import": "./dist/client/index.mjs",
+      "module": "./dist/client/index.mjs",
+      "require": "./dist/client/index.js"
     }
   },
   "main": "./dist/index.js",
@@ -28,6 +34,7 @@
   "types": "./dist/index.d.ts",
   "files": [
     "CHANGELOG.md",
+    "client.d.ts",
     "dist/**/*"
   ],
   "engines": {
