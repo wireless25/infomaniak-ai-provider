@@ -1,4 +1,21 @@
 
+## v0.1.9
+
+[compare changes](https://github.com/wireless25/infomaniak-ai-provider/compare/v0.1.8...v0.1.9)
+
+### 🚀 Enhancements
+
+- UseInfomaniakModel client hook ([588f572](https://github.com/wireless25/infomaniak-ai-provider/commit/588f572))
+
+### 🏡 Chore
+
+- **release:** V0.1.8 ([10096a2](https://github.com/wireless25/infomaniak-ai-provider/commit/10096a2))
+- Upgrade dependencies ([7253d0c](https://github.com/wireless25/infomaniak-ai-provider/commit/7253d0c))
+
+### ❤️ Contributors
+
+- Stephan Simonett ([@wireless25](https://github.com/wireless25))
+
 ## v0.1.8
 
 [compare changes](https://github.com/wireless25/infomaniak-ai-provider/compare/v0.1.6...v0.1.8)
