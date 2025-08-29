@@ -82,24 +82,24 @@ function generateTypes(modelsData: InfomaniakModel[]): string {
 
 export type ModelType = ${Array.from(types).map(t => `'${t}'`).join(' | ')}
 
-export type InfoStatus = ${Array.from(statuses).map(s => `'${s}'`).join(' | ')}
+export type InfoStatus = ${Array.from(statuses).map(s => `'${s}'`).join(' | ')} | (string & {})
 
 // Model ID unions by type
 ${Array.from(types).map((type) => {
   const typeName = typeNameMapping[type] || type.toUpperCase()
   const models = modelsByType[type] || []
 
-  return `export type Infomaniak${typeName}ModelId = 
-  | ${models.map(name => `'${name}'`).join('\n  | ')}
-  | (string & {})`
+  return `export type Infomaniak${typeName}ModelId
+  = | ${models.map(name => `'${name}'`).join('\n    | ')}
+    | (string & {})`
 }).join('\n\n')}
 
 // All model IDs union
-export type InfomaniakModelId = 
-${Array.from(types).map((type) => {
-  const typeName = typeNameMapping[type] || type.toUpperCase()
-  return `  | Infomaniak${typeName}ModelId`
-}).join('\n')}
+export type InfomaniakModelId
+  = ${Array.from(types).map((type) => {
+    const typeName = typeNameMapping[type] || type.toUpperCase()
+    return `| Infomaniak${typeName}ModelId`
+  }).join('\n    ')}
 
 export interface InfomaniakModel {
   description: string
@@ -126,7 +126,7 @@ export function getModelsByType<T extends ModelType>(models: InfomaniakModels, t
   return models.filter(model => model.type === type)
 }
 
-export function getReadyModels(models: InfomaniakModels): InfomaniakModel[] {
+export function getReadyModels(models: InfomaniakModels): InfomaniakModels {
   return models.filter(model => model.info_status === 'ready')
 }
 
@@ -134,7 +134,7 @@ ${Array.from(types).map((type) => {
   const typeName = typeNameMapping[type] || type.toUpperCase()
   const functionName = `get${typeName}Models`
 
-  return `export function ${functionName}(models: InfomaniakModels): InfomaniakModel[] {
+  return `export function ${functionName}(models: InfomaniakModels): InfomaniakModels {
   return getModelsByType(models, '${type}')
 }`
 }).join('\n\n')}

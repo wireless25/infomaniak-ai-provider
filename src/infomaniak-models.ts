@@ -1,5 +1,5 @@
 // Generated types for Infomaniak AI Models
-// Last updated: 2025-08-15T09:46:17.385Z
+// Last updated: 2025-08-29T20:33:48.932Z
 // Do not change this file, it will be regenerated automatically
 
 export type ModelType = 'stt' | 'llm' | 'image' | 'embedding'
@@ -80,7 +80,7 @@ export function getReadyModels(models: InfomaniakModels): InfomaniakModels {
   return models.filter(model => model.info_status === 'ready')
 }
 
-export function getTranscriptionModels(models: InfomaniakModels): InfomaniakModels {
+export function getSTTModels(models: InfomaniakModels): InfomaniakModels {
   return getModelsByType(models, 'stt')
 }
 

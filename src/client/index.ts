@@ -1,5 +1,5 @@
 import type { InfomaniakModel as InfomaniakApiModel } from '../infomaniak-models'
-import { getChatModels, getEmbeddingModels, getImageModels, getTranscriptionModels } from '../infomaniak-models'
+import { getChatModels, getEmbeddingModels, getImageModels, getSTTModels } from '../infomaniak-models'
 import modelData from '../infomaniak-models-data.json'
 
 interface InfomaniakModel {
@@ -31,7 +31,7 @@ export function useInfomaniakModels() {
     chatModels: getChatModels(_models).map(toClientModel),
     embeddingModels: getEmbeddingModels(_models).map(toClientModel),
     imageModels: getImageModels(_models).map(toClientModel),
-    transcriptionModels: getTranscriptionModels(_models).map(toClientModel),
+    transcriptionModels: getSTTModels(_models).map(toClientModel),
     models: _models.map(toClientModel),
   }
 }

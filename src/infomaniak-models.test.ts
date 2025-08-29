@@ -6,7 +6,7 @@ import {
   getImageModels,
   getModelsByType,
   getReadyModels,
-  getTranscriptionModels,
+  getSTTModels,
   MODEL_NAMES,
 } from './infomaniak-models'
 
@@ -76,7 +76,7 @@ describe('infomaniak-models helpers', () => {
   })
 
   it('getTranscriptionModels returns only stt models', () => {
-    const stt = getTranscriptionModels(mockModels)
+    const stt = getSTTModels(mockModels)
     expect(stt).toHaveLength(1)
     expect(stt[0].type).toBe('stt')
   })
