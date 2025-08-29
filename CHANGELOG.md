@@ -1,4 +1,17 @@
 
+## v0.1.10
+
+[compare changes](https://github.com/wireless25/infomaniak-ai-provider/compare/v0.1.9...v0.1.10)
+
+### 🏡 Chore
+
+- **release:** V0.1.9 ([84471c1](https://github.com/wireless25/infomaniak-ai-provider/commit/84471c1))
+- Improved type generation ([c355a6b](https://github.com/wireless25/infomaniak-ai-provider/commit/c355a6b))
+
+### ❤️ Contributors
+
+- Stephan Simonett ([@wireless25](https://github.com/wireless25))
+
 ## v0.1.9
 
 [compare changes](https://github.com/wireless25/infomaniak-ai-provider/compare/v0.1.8...v0.1.9)
