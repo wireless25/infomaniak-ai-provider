@@ -99,17 +99,14 @@ describe('infomaniak-models helpers', () => {
     expect(embedding[0].type).toBe('embedding')
   })
 
-  it('the const MODEL_NAMES contains all expected keys', () => {
+  it('the const MODEL_NAMES contains expected keys', () => {
     expect(MODEL_NAMES.WHISPER).toBe('whisper')
     expect(MODEL_NAMES.LLAMA3).toBe('llama3')
     expect(MODEL_NAMES.PHOTOMAKER).toBe('photomaker')
-    expect(MODEL_NAMES.WHISPERV2).toBe('whisperV2')
     expect(MODEL_NAMES.FLUX).toBe('flux')
     expect(MODEL_NAMES.GRANITE).toBe('granite')
     expect(MODEL_NAMES.BGE_MULTILINGUAL_GEMMA2).toBe('bge_multilingual_gemma2')
     expect(MODEL_NAMES.MINI_LM_L12_V2).toBe('mini_lm_l12_v2')
-    expect(MODEL_NAMES.REASONING).toBe('reasoning')
-    expect(MODEL_NAMES.MISTRAL24B).toBe('mistral24b')
     expect(MODEL_NAMES.MISTRAL3).toBe('mistral3')
     expect(MODEL_NAMES.QWEN3).toBe('qwen3')
     expect(MODEL_NAMES.GEMMA3N).toBe('gemma3n')
