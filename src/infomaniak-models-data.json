@@ -9,7 +9,10 @@
     "logo_url": "https://storage4.infomaniak.com/ai-tools/public/logos/whisper.svg",
     "last_updated_at": "2024-07-01",
     "max_token_input": null,
-    "version": "3.0"
+    "version": "3.0",
+    "meta": {
+      "is_beta": false
+    }
   },
   {
     "id": 6,
@@ -21,7 +24,10 @@
     "logo_url": "https://storage4.infomaniak.com/ai-tools/public/logos/llama3.svg",
     "last_updated_at": "2024-07-01",
     "max_token_input": 100000,
-    "version": "0.1"
+    "version": "0.1",
+    "meta": {
+      "is_beta": false
+    }
   },
   {
     "id": 8,
@@ -33,19 +39,10 @@
     "logo_url": "https://storage4.infomaniak.com/ai-tools/public/logos/photomaker.svg",
     "last_updated_at": "2024-07-15",
     "max_token_input": null,
-    "version": "2.0"
-  },
-  {
-    "id": 9,
-    "name": "whisperV2",
-    "type": "stt",
-    "documentation_link": "https://developer.infomaniak.com/docs/api/post/1/ai/%7Bproduct_id%7D/openai/audio/transcriptions",
-    "description": "Whisper V2",
-    "info_status": "coming_soon",
-    "logo_url": "https://storage4.infomaniak.com/ai-tools/public/logos/whisper.svg",
-    "last_updated_at": "2024-07-01",
-    "max_token_input": null,
-    "version": "2.0"
+    "version": "2.0",
+    "meta": {
+      "is_beta": false
+    }
   },
   {
     "id": 10,
@@ -57,7 +54,10 @@
     "logo_url": "https://storage4.infomaniak.com/ai-tools/public/logos/flux.svg",
     "last_updated_at": "2024-10-01",
     "max_token_input": null,
-    "version": "0.1"
+    "version": "0.1",
+    "meta": {
+      "is_beta": false
+    }
   },
   {
     "id": 11,
@@ -69,7 +69,10 @@
     "logo_url": "https://storage4.infomaniak.com/ai-tools/public/logos/granite.svg",
     "last_updated_at": "2024-12-04",
     "max_token_input": 128000,
-    "version": "3.1"
+    "version": "3.1",
+    "meta": {
+      "is_beta": false
+    }
   },
   {
     "id": 12,
@@ -81,7 +84,10 @@
     "logo_url": "https://storage4.infomaniak.com/ai-tools/public/logos/bge.svg",
     "last_updated_at": "2024-12-04",
     "max_token_input": 8000,
-    "version": "1.0"
+    "version": "1.0",
+    "meta": {
+      "is_beta": false
+    }
   },
   {
     "id": 13,
@@ -93,31 +99,10 @@
     "logo_url": "https://storage4.infomaniak.com/ai-tools/public/logos/minilm.svg",
     "last_updated_at": "2024-12-04",
     "max_token_input": 128,
-    "version": "2.0"
-  },
-  {
-    "id": 14,
-    "name": "reasoning",
-    "type": "llm",
-    "documentation_link": "https://developer.infomaniak.com/docs/api/post/1/ai/%7Bproduct_id%7D/openai/chat/completions",
-    "description": "DeepSeek-R1-distilled-qwen-32B",
-    "info_status": "coming_soon",
-    "logo_url": "https://storage4.infomaniak.com/ai-tools/public/logos/deepseek.svg",
-    "last_updated_at": "2025-01-27",
-    "max_token_input": 128000,
-    "version": "1.0"
-  },
-  {
-    "id": 15,
-    "name": "mistral24b",
-    "type": "llm",
-    "documentation_link": "https://developer.infomaniak.com/docs/api/post/1/ai/%7Bproduct_id%7D/openai/chat/completions",
-    "description": "Mistral-Small-24B-Instruct-2501",
-    "info_status": "ready",
-    "logo_url": "https://storage4.infomaniak.com/ai-tools/public/logos/mixtral.svg",
-    "last_updated_at": "2025-03-11",
-    "max_token_input": 32000,
-    "version": "1.0"
+    "version": "2.0",
+    "meta": {
+      "is_beta": false
+    }
   },
   {
     "id": 16,
@@ -129,19 +114,25 @@
     "logo_url": "https://storage4.infomaniak.com/ai-tools/public/logos/mixtral.svg",
     "last_updated_at": "2025-07-03",
     "max_token_input": 128000,
-    "version": "3.2"
+    "version": "3.2",
+    "meta": {
+      "is_beta": false
+    }
   },
   {
     "id": 17,
     "name": "qwen3",
     "type": "llm",
     "documentation_link": "https://developer.infomaniak.com/docs/api/post/1/ai/%7Bproduct_id%7D/openai/chat/completions",
-    "description": "Qwen3-235B-A22B-Instruct-2507",
+    "description": "Qwen/Qwen3-VL-235B-A22B-Instruct",
     "info_status": "ready",
     "logo_url": "https://storage4.infomaniak.com/ai-tools/public/logos/qwen.svg",
-    "last_updated_at": "2025-07-30",
+    "last_updated_at": "2025-10-09",
     "max_token_input": 262144,
-    "version": "3"
+    "version": "3",
+    "meta": {
+      "is_beta": false
+    }
   },
   {
     "id": 18,
@@ -153,6 +144,69 @@
     "logo_url": "https://storage4.infomaniak.com/ai-tools/public/logos/gemma.svg",
     "last_updated_at": "2025-07-30",
     "max_token_input": 32000,
-    "version": "3"
+    "version": "3",
+    "meta": {
+      "is_beta": false
+    }
+  },
+  {
+    "id": 19,
+    "name": "Qwen/Qwen3-Coder-480B-A35B-Instruct",
+    "type": "llm",
+    "documentation_link": "https://developer.infomaniak.com/docs/api/post/2/ai/%7Bproduct_id%7D/openai/v1/chat/completions",
+    "description": "Qwen/Qwen3-Coder-480B-A35B-Instruct",
+    "info_status": "coming_soon",
+    "logo_url": "https://storage4.infomaniak.com/ai-tools/public/logos/qwen.svg",
+    "last_updated_at": "2025-10-09",
+    "max_token_input": 262144,
+    "version": "3",
+    "meta": {
+      "is_beta": true
+    }
+  },
+  {
+    "id": 20,
+    "name": "swiss-ai/Apertus-70B-Instruct-2509",
+    "type": "llm",
+    "documentation_link": "https://developer.infomaniak.com/docs/api/post/2/ai/%7Bproduct_id%7D/openai/v1/chat/completions",
+    "description": "Apertus-70B-Instruct-2509",
+    "info_status": "coming_soon",
+    "logo_url": "https://storage4.infomaniak.com/ai-tools/public/logos/apertus.svg",
+    "last_updated_at": "2025-10-09",
+    "max_token_input": 65536,
+    "version": null,
+    "meta": {
+      "is_beta": true
+    }
+  },
+  {
+    "id": 21,
+    "name": "Qwen/Qwen3-Embedding-8B",
+    "type": "embedding",
+    "documentation_link": "https://developer.infomaniak.com/docs/api/post/2/ai/%7Bproduct_id%7D/openai/v1/embeddings",
+    "description": "Qwen/Qwen3-Embedding-8B",
+    "info_status": "coming_soon",
+    "logo_url": "https://storage4.infomaniak.com/ai-tools/public/logos/qwen.svg",
+    "last_updated_at": "2025-11-24",
+    "max_token_input": 8192,
+    "version": null,
+    "meta": {
+      "is_beta": true
+    }
+  },
+  {
+    "id": 22,
+    "name": "openai/gpt-oss-120b",
+    "type": "llm",
+    "documentation_link": "https://developer.infomaniak.com/docs/api/post/2/ai/%7Bproduct_id%7D/openai/v1/chat/completions",
+    "description": "openai/gpt-oss-120b",
+    "info_status": "coming_soon",
+    "logo_url": "https://storage4.infomaniak.com/ai-tools/public/logos/openai.svg",
+    "last_updated_at": "2025-11-26",
+    "max_token_input": 131072,
+    "version": null,
+    "meta": {
+      "is_beta": true
+    }
   }
 ]
