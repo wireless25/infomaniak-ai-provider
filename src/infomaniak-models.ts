@@ -1,8 +1,8 @@
 // Generated types for Infomaniak AI Models
-// Last updated: 2025-11-26T14:07:15.312Z
+// Last updated: 2025-12-23T10:16:55.092Z
 // Do not change this file, it will be regenerated automatically
 
-export type ModelType = 'stt' | 'llm' | 'image' | 'embedding'
+export type ModelType = 'stt' | 'llm' | 'image' | 'embedding' | 'reranker'
 
 export type InfoStatus = 'ready' | 'coming_soon' | (string & {})
 
@@ -17,7 +17,6 @@ export type InfomaniakChatModelId
     | 'mistral3'
     | 'qwen3'
     | 'gemma3n'
-    | 'Qwen/Qwen3-Coder-480B-A35B-Instruct'
     | 'swiss-ai/Apertus-70B-Instruct-2509'
     | 'openai/gpt-oss-120b'
     | (string & {})
@@ -33,12 +32,18 @@ export type InfomaniakEmbeddingModelId
     | 'Qwen/Qwen3-Embedding-8B'
     | (string & {})
 
+export type InfomaniakRERANKERModelId
+  = | 'BAAI/bge-reranker-v2-m3'
+    | 'Qwen/Qwen3-Reranker-0.6B'
+    | (string & {})
+
 // All model IDs union
 export type InfomaniakModelId
   = | InfomaniakSTTModelId
     | InfomaniakChatModelId
     | InfomaniakImageModelId
     | InfomaniakEmbeddingModelId
+    | InfomaniakRERANKERModelId
 
 export interface InfomaniakModel {
   description: string
@@ -67,10 +72,11 @@ export const MODEL_NAMES = {
   'MISTRAL3': 'mistral3' as const,
   'QWEN3': 'qwen3' as const,
   'GEMMA3N': 'gemma3n' as const,
-  'QWEN/QWEN3-CODER-480B-A35B-INSTRUCT': 'Qwen/Qwen3-Coder-480B-A35B-Instruct' as const,
   'SWISS-AI/APERTUS-70B-INSTRUCT-2509': 'swiss-ai/Apertus-70B-Instruct-2509' as const,
   'QWEN/QWEN3-EMBEDDING-8B': 'Qwen/Qwen3-Embedding-8B' as const,
   'OPENAI/GPT-OSS-120B': 'openai/gpt-oss-120b' as const,
+  'BAAI/BGE-RERANKER-V2-M3': 'BAAI/bge-reranker-v2-m3' as const,
+  'QWEN/QWEN3-RERANKER-0.6B': 'Qwen/Qwen3-Reranker-0.6B' as const,
 } as const
 
 // Helper functions
@@ -96,4 +102,8 @@ export function getImageModels(models: InfomaniakModels): InfomaniakModels {
 
 export function getEmbeddingModels(models: InfomaniakModels): InfomaniakModels {
   return getModelsByType(models, 'embedding')
+}
+
+export function getRERANKERModels(models: InfomaniakModels): InfomaniakModels {
+  return getModelsByType(models, 'reranker')
 }

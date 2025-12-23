@@ -150,21 +150,6 @@
     }
   },
   {
-    "id": 19,
-    "name": "Qwen/Qwen3-Coder-480B-A35B-Instruct",
-    "type": "llm",
-    "documentation_link": "https://developer.infomaniak.com/docs/api/post/2/ai/%7Bproduct_id%7D/openai/v1/chat/completions",
-    "description": "Qwen/Qwen3-Coder-480B-A35B-Instruct",
-    "info_status": "coming_soon",
-    "logo_url": "https://storage4.infomaniak.com/ai-tools/public/logos/qwen.svg",
-    "last_updated_at": "2025-10-09",
-    "max_token_input": 262144,
-    "version": "3",
-    "meta": {
-      "is_beta": true
-    }
-  },
-  {
     "id": 20,
     "name": "swiss-ai/Apertus-70B-Instruct-2509",
     "type": "llm",
@@ -204,6 +189,36 @@
     "logo_url": "https://storage4.infomaniak.com/ai-tools/public/logos/openai.svg",
     "last_updated_at": "2025-11-26",
     "max_token_input": 131072,
+    "version": null,
+    "meta": {
+      "is_beta": true
+    }
+  },
+  {
+    "id": 23,
+    "name": "BAAI/bge-reranker-v2-m3",
+    "type": "reranker",
+    "documentation_link": "https://developer.infomaniak.com/docs/api/post/2/ai/%7Bproduct_id%7D/v2/rerank",
+    "description": "BAAI/bge-reranker-v2-m3",
+    "info_status": "coming_soon",
+    "logo_url": "https://storage4.infomaniak.com/ai-tools/public/logos/bge.svg",
+    "last_updated_at": "2025-12-12",
+    "max_token_input": null,
+    "version": null,
+    "meta": {
+      "is_beta": true
+    }
+  },
+  {
+    "id": 24,
+    "name": "Qwen/Qwen3-Reranker-0.6B",
+    "type": "reranker",
+    "documentation_link": "https://developer.infomaniak.com/docs/api/post/2/ai/%7Bproduct_id%7D/v2/rerank",
+    "description": "Qwen/Qwen3-Reranker-0.6B",
+    "info_status": "coming_soon",
+    "logo_url": "https://storage4.infomaniak.com/ai-tools/public/logos/qwen.svg",
+    "last_updated_at": "2025-12-12",
+    "max_token_input": null,
     "version": null,
     "meta": {
       "is_beta": true

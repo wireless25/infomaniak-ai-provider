@@ -118,7 +118,7 @@ export type InfomaniakModels = InfomaniakModel[]
 
 // Model name constants for easy access
 export const MODEL_NAMES = {
-${modelsData.map(m => `  ${m.name.toUpperCase()}: '${m.name}' as const,`).join('\n')}
+${modelsData.map(m => `  '${m.name.toUpperCase()}': '${m.name}' as const,`).join('\n')}
 } as const
 
 // Helper functions
