@@ -11,7 +11,8 @@
     "max_token_input": null,
     "version": "3.0",
     "meta": {
-      "is_beta": false
+      "is_beta": false,
+      "is_coder": false
     }
   },
   {
@@ -26,7 +27,8 @@
     "max_token_input": 100000,
     "version": "0.1",
     "meta": {
-      "is_beta": false
+      "is_beta": false,
+      "is_coder": false
     }
   },
   {
@@ -41,7 +43,8 @@
     "max_token_input": null,
     "version": "2.0",
     "meta": {
-      "is_beta": false
+      "is_beta": false,
+      "is_coder": false
     }
   },
   {
@@ -56,7 +59,8 @@
     "max_token_input": null,
     "version": "0.1",
     "meta": {
-      "is_beta": false
+      "is_beta": false,
+      "is_coder": false
     }
   },
   {
@@ -71,7 +75,8 @@
     "max_token_input": 128000,
     "version": "3.1",
     "meta": {
-      "is_beta": false
+      "is_beta": false,
+      "is_coder": false
     }
   },
   {
@@ -86,7 +91,8 @@
     "max_token_input": 8000,
     "version": "1.0",
     "meta": {
-      "is_beta": false
+      "is_beta": false,
+      "is_coder": false
     }
   },
   {
@@ -101,7 +107,8 @@
     "max_token_input": 128,
     "version": "2.0",
     "meta": {
-      "is_beta": false
+      "is_beta": false,
+      "is_coder": false
     }
   },
   {
@@ -116,7 +123,8 @@
     "max_token_input": 128000,
     "version": "3.2",
     "meta": {
-      "is_beta": false
+      "is_beta": false,
+      "is_coder": false
     }
   },
   {
@@ -131,7 +139,8 @@
     "max_token_input": 262144,
     "version": "3",
     "meta": {
-      "is_beta": false
+      "is_beta": false,
+      "is_coder": false
     }
   },
   {
@@ -146,7 +155,8 @@
     "max_token_input": 32000,
     "version": "3",
     "meta": {
-      "is_beta": false
+      "is_beta": false,
+      "is_coder": false
     }
   },
   {
@@ -161,7 +171,8 @@
     "max_token_input": 65536,
     "version": null,
     "meta": {
-      "is_beta": true
+      "is_beta": true,
+      "is_coder": false
     }
   },
   {
@@ -176,7 +187,8 @@
     "max_token_input": 8192,
     "version": null,
     "meta": {
-      "is_beta": true
+      "is_beta": true,
+      "is_coder": false
     }
   },
   {
@@ -191,14 +203,15 @@
     "max_token_input": 131072,
     "version": null,
     "meta": {
-      "is_beta": true
+      "is_beta": true,
+      "is_coder": false
     }
   },
   {
     "id": 23,
     "name": "BAAI/bge-reranker-v2-m3",
     "type": "reranker",
-    "documentation_link": "https://developer.infomaniak.com/docs/api/post/2/ai/%7Bproduct_id%7D/v2/rerank",
+    "documentation_link": "https://developer.infomaniak.com/docs/api/post/2/ai/%7Bproduct_id%7D/cohere/v2/rerank",
     "description": "BAAI/bge-reranker-v2-m3",
     "info_status": "coming_soon",
     "logo_url": "https://storage4.infomaniak.com/ai-tools/public/logos/bge.svg",
@@ -206,14 +219,15 @@
     "max_token_input": null,
     "version": null,
     "meta": {
-      "is_beta": true
+      "is_beta": true,
+      "is_coder": false
     }
   },
   {
     "id": 24,
     "name": "Qwen/Qwen3-Reranker-0.6B",
     "type": "reranker",
-    "documentation_link": "https://developer.infomaniak.com/docs/api/post/2/ai/%7Bproduct_id%7D/v2/rerank",
+    "documentation_link": "https://developer.infomaniak.com/docs/api/post/2/ai/%7Bproduct_id%7D/cohere/v2/rerank",
     "description": "Qwen/Qwen3-Reranker-0.6B",
     "info_status": "coming_soon",
     "logo_url": "https://storage4.infomaniak.com/ai-tools/public/logos/qwen.svg",
@@ -221,7 +235,24 @@
     "max_token_input": null,
     "version": null,
     "meta": {
-      "is_beta": true
+      "is_beta": true,
+      "is_coder": false
+    }
+  },
+  {
+    "id": 28,
+    "name": "moonshotai/Kimi-K2.5",
+    "type": "llm",
+    "documentation_link": "https://developer.infomaniak.com/docs/api/post/2/ai/%7Bproduct_id%7D/openai/v1/chat/completions",
+    "description": "moonshotai/Kimi-K2.5",
+    "info_status": "coming_soon",
+    "logo_url": "https://storage4.infomaniak.com/ai-tools/public/logos/moonshotai.svg",
+    "last_updated_at": "2025-02-19",
+    "max_token_input": 256000,
+    "version": null,
+    "meta": {
+      "is_beta": true,
+      "is_coder": false
     }
   }
 ]

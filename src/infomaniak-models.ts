@@ -1,5 +1,5 @@
 // Generated types for Infomaniak AI Models
-// Last updated: 2025-12-23T10:16:55.092Z
+// Last updated: 2026-03-19T13:53:46.857Z
 // Do not change this file, it will be regenerated automatically
 
 export type ModelType = 'stt' | 'llm' | 'image' | 'embedding' | 'reranker'
@@ -19,6 +19,7 @@ export type InfomaniakChatModelId
     | 'gemma3n'
     | 'swiss-ai/Apertus-70B-Instruct-2509'
     | 'openai/gpt-oss-120b'
+    | 'moonshotai/Kimi-K2.5'
     | (string & {})
 
 export type InfomaniakImageModelId
@@ -77,6 +78,7 @@ export const MODEL_NAMES = {
   'OPENAI/GPT-OSS-120B': 'openai/gpt-oss-120b' as const,
   'BAAI/BGE-RERANKER-V2-M3': 'BAAI/bge-reranker-v2-m3' as const,
   'QWEN/QWEN3-RERANKER-0.6B': 'Qwen/Qwen3-Reranker-0.6B' as const,
+  'MOONSHOTAI/KIMI-K2.5': 'moonshotai/Kimi-K2.5' as const,
 } as const
 
 // Helper functions
