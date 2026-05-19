@@ -17,7 +17,7 @@ interface InfomaniakModel {
   max_token_input: number | null
   name: string
   type: string
-  version: string
+  version: string | null
 }
 
 interface ApiResponse {
@@ -111,7 +111,7 @@ export interface InfomaniakModel {
   max_token_input: number | null
   name: string
   type: ModelType
-  version: string
+  version: string | null
 }
 
 export type InfomaniakModels = InfomaniakModel[]

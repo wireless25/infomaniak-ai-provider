@@ -1,5 +1,5 @@
 // Generated types for Infomaniak AI Models
-// Last updated: 2026-05-19T15:48:46.018Z
+// Last updated: 2026-05-19T21:22:22.139Z
 // Do not change this file, it will be regenerated automatically
 
 export type ModelType = 'stt' | 'image' | 'embedding' | 'llm' | 'reranker'
@@ -53,7 +53,7 @@ export interface InfomaniakModel {
   max_token_input: number | null
   name: string
   type: ModelType
-  version: string
+  version: string | null
 }
 
 export type InfomaniakModels = InfomaniakModel[]

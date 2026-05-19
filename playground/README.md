@@ -4,31 +4,34 @@ You can use the AI SDK in an [Hono](https://hono.dev/) server to generate and st
 
 ## Usage
 
-1. Copy the .env.template file and fill the variables:
+1. Copy the `.env.template` file and fill the variables:
 
 ```sh
 cp .env.template .env
 ```
 
-2. Run the following commands from the root directory:
+2. From the **project root**, install dependencies:
 
 ```sh
 pnpm install
 ```
 
-3. Run the following command:
+3. Start a server:
 
 ```sh
-# server
-pnpm dev
+# Hono server (port 8080)
+pnpm --filter playground dev
 
-# streaming
-pnpm dev:streaming
+# Streaming server (port 3001)
+pnpm --filter playground dev:streaming
 ```
 
-4. Test the endpoint with Curl:
+4. Test the endpoints:
 
 ```sh
+# Hono server
 curl -i -X POST http://localhost:8080/
+
+# Streaming server
 curl -i -X POST http://localhost:3001/chat
 ```

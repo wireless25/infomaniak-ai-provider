@@ -35,7 +35,7 @@ app.post('/', async (c) => {
     productId: INFOMANIAK_PRODUCT_ID,
   })
   const result = streamText({
-    model: infomaniak('mistral24b'),
+    model: infomaniak('google/gemma-4-31B-it'),
     prompt: 'Invent a new holiday and describe its traditions.',
   })
 
@@ -52,7 +52,7 @@ app.post('/stream-data', async (c) => {
   })
   // immediately start streaming the response
   const result = streamText({
-    model: infomaniak('mistral24b'),
+    model: infomaniak('google/gemma-4-31B-it'),
     prompt: 'Invent a new holiday and describe its traditions.',
   })
 

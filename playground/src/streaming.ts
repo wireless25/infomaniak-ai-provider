@@ -15,7 +15,7 @@ async function main() {
   // Basic UI Message Stream endpoint
   app.post('/chat', async () => {
     const result = streamText({
-      model: infomaniak('mistral24b'),
+      model: infomaniak('google/gemma-4-31B-it'),
       prompt: 'Invent a new holiday and describe its traditions.',
     })
 
@@ -25,7 +25,7 @@ async function main() {
   // Text stream endpoint
   app.post('/text', async (c) => {
     const result = streamText({
-      model: infomaniak('mistral24b'),
+      model: infomaniak('google/gemma-4-31B-it'),
       prompt: 'Write a short poem about coding.',
     })
 

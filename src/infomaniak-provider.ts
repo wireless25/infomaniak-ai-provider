@@ -1,5 +1,5 @@
 import type { OpenAICompatibleProviderSettings } from '@ai-sdk/openai-compatible'
-import type { EmbeddingModelV2, ImageModelV2, LanguageModelV2, TranscriptionModelV2 } from '@ai-sdk/provider'
+import type { EmbeddingModelV3, ImageModelV3, LanguageModelV3, TranscriptionModelV3 } from '@ai-sdk/provider'
 import type { InfomaniakCommonModelConfig } from './infomaniak-config'
 import type { InfomaniakChatModelId, InfomaniakEmbeddingModelId, InfomaniakImageModelId, InfomaniakSTTModelId } from './infomaniak-models'
 import {
@@ -38,16 +38,16 @@ export interface InfomaniakProviderSettings {
 }
 
 export interface InfomaniakProvider {
-  (modelId: InfomaniakChatModelId): LanguageModelV2
-  languageModel: (modelId: InfomaniakChatModelId) => LanguageModelV2
-  chatModel: (modelId: InfomaniakChatModelId) => LanguageModelV2
-  textEmbeddingModel: (modelId: InfomaniakEmbeddingModelId) => EmbeddingModelV2<string>
-  imageModel: (modelId: InfomaniakImageModelId) => ImageModelV2
+  (modelId: InfomaniakChatModelId): LanguageModelV3
+  languageModel: (modelId: InfomaniakChatModelId) => LanguageModelV3
+  chatModel: (modelId: InfomaniakChatModelId) => LanguageModelV3
+  textEmbeddingModel: (modelId: InfomaniakEmbeddingModelId) => EmbeddingModelV3
+  imageModel: (modelId: InfomaniakImageModelId) => ImageModelV3
   /**
    * Creates a model for transcription.
    * @experimental
    */
-  transcription: (modelId: InfomaniakSTTModelId) => TranscriptionModelV2
+  transcription: (modelId: InfomaniakSTTModelId) => TranscriptionModelV3
 }
 
 export function createInfomaniak(
@@ -59,7 +59,7 @@ export function createInfomaniak(
     description: 'Infomaniak product ID',
     settingValue: options.productId,
   })
-  const getApiUrl = () => `https://api.infomaniak.com/1/ai/${getProductId()}/openai`
+  const getApiUrl = () => `https://api.infomaniak.com/2/ai/${getProductId()}/openai/v1`
   const getHeaders = () => ({
     Authorization: `Bearer ${loadApiKey({
       apiKey: options.apiKey,

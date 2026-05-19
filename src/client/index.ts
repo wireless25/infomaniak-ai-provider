@@ -6,7 +6,7 @@ interface InfomaniakModel {
   name: string
   type: string
   id: string
-  version: string
+  version: string | null
   maxTokenInput: number | null
   lastUpdatedAt: string
   status: string

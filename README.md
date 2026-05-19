@@ -1,8 +1,19 @@
 # AI SDK - Infomaniak Provider
 
-> the project is under active development, for now only text and embedding models are supported.
+The Infomaniak provider for the [AI SDK](https://ai-sdk.dev/docs/introduction) contains language model support for the [Infomaniak AI Tools API](https://www.infomaniak.com/en/hosting/ai-services/open-source-models).
 
-The Infomaniak provider for the [AI SDK](https://ai-sdk.dev/docs) contains language model support for the [Infomaniak AI Tools API](https://www.infomaniak.com/en/hosting/ai-tools/open-source-models).
+## Requirements
+
+| Provider version | AI SDK |
+|---|---|
+| `0.2.x` | `ai@^5` |
+| `0.3.x` | `ai@^6` |
+
+| Pkg version | Infomaniak API version |
+|---|---|
+| `<=0.2.4` | `v1` |
+| `^0.2.5` | `v2` |
+| `^0.3.0` | `v2` |
 
 ## Setup
 
@@ -27,7 +38,7 @@ import { generateText } from 'ai'
 import { infomaniak } from 'infomaniak-ai-provider'
 
 const { text } = await generateText({
-  model: infomaniak('qwen3'),
+  model: infomaniak('google/gemma-4-31B-it'),
   prompt: 'Write a vegetarian lasagna recipe for 4 people.',
 })
 ```
@@ -46,7 +57,7 @@ const infomaniak = createInfomaniak({
 })
 
 const { text } = await generateText({
-  model: infomaniak('qwen3'),
+  model: infomaniak('google/gemma-4-31B-it'),
   prompt: 'Write a vegetarian lasagna recipe for 4 people.',
 })
 ```

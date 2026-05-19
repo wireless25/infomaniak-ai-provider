@@ -1,7 +1,7 @@
 import type {
-  TranscriptionModelV2,
-  TranscriptionModelV2CallOptions,
-  TranscriptionModelV2CallWarning,
+  SharedV3Warning,
+  TranscriptionModelV3,
+  TranscriptionModelV3CallOptions,
 } from '@ai-sdk/provider'
 import type { InfomaniakCommonModelConfig } from '../infomaniak-config'
 import type { InfomaniakSTTModelId } from '../infomaniak-models'
@@ -19,7 +19,7 @@ import { infomaniakFailedResponseHandler } from '../infomaniak-error'
 import { infomaniakTranscriptionProviderOptions } from './infomaniak-transcription-options'
 
 export type InfomaniakTranscriptionCallOptions = Omit<
-  TranscriptionModelV2CallOptions,
+  TranscriptionModelV3CallOptions,
   'providerOptions'
 > & {
   providerOptions?: {
@@ -129,8 +129,8 @@ const infomaniakTranscriptionDataSchema = z.object({
   })).nullish(),
 })
 
-export class InfomaniakTranscriptionModel implements TranscriptionModelV2 {
-  readonly specificationVersion = 'v2'
+export class InfomaniakTranscriptionModel implements TranscriptionModelV3 {
+  readonly specificationVersion = 'v3'
 
   get provider(): string {
     return this.config.provider
@@ -146,7 +146,7 @@ export class InfomaniakTranscriptionModel implements TranscriptionModelV2 {
     mediaType,
     providerOptions,
   }: InfomaniakTranscriptionCallOptions) {
-    const warnings: TranscriptionModelV2CallWarning[] = []
+    const warnings: SharedV3Warning[] = []
 
     // Parse provider options
     const infomaniakOptions = await parseProviderOptions({
@@ -246,7 +246,7 @@ export class InfomaniakTranscriptionModel implements TranscriptionModelV2 {
 
   async doGenerate(
     options: InfomaniakTranscriptionCallOptions,
-  ): Promise<Awaited<ReturnType<TranscriptionModelV2['doGenerate']>>> {
+  ): Promise<Awaited<ReturnType<TranscriptionModelV3['doGenerate']>>> {
     const currentDate = this.config._internal?.currentDate?.() ?? new Date()
     const { formData, warnings } = await this.getArgs(options)
 
