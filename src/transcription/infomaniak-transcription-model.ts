@@ -19,8 +19,8 @@ import { infomaniakFailedResponseHandler } from '../infomaniak-error'
 import { infomaniakTranscriptionProviderOptions } from './infomaniak-transcription-options'
 
 export type InfomaniakTranscriptionCallOptions = Omit<
-    TranscriptionModelV2CallOptions,
-    'providerOptions'
+  TranscriptionModelV2CallOptions,
+  'providerOptions'
 > & {
   providerOptions?: {
     infomaniak?: InfomaniakTranscriptionProviderOptions
@@ -158,9 +158,9 @@ export class InfomaniakTranscriptionModel implements TranscriptionModelV2 {
     // Create form data with base fields
     const formData = new FormData()
     const blob
-            = audio instanceof Uint8Array
-              ? new Blob([audio as Uint8Array<ArrayBuffer>])
-              : new Blob([convertBase64ToUint8Array(audio)])
+      = audio instanceof Uint8Array
+        ? new Blob([audio as Uint8Array<ArrayBuffer>])
+        : new Blob([convertBase64ToUint8Array(audio)])
 
     formData.append('model', this.modelId)
     formData.append('file', new File([blob], 'audio', { type: mediaType }))
