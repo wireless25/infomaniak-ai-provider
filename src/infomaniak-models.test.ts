@@ -31,7 +31,7 @@ const mockModels: InfomaniakModels = [
     last_updated_at: '2025-08-15',
     logo_url: 'https://logo/llama3.png',
     max_token_input: 4096,
-    name: MODEL_NAMES.LLAMA3,
+    name: MODEL_NAMES['QWEN/QWEN3.5-122B-A10B-FP8'],
     type: 'llm',
     version: '3.0',
   },
@@ -101,15 +101,18 @@ describe('infomaniak-models helpers', () => {
 
   it('the const MODEL_NAMES contains expected keys', () => {
     expect(MODEL_NAMES.WHISPER).toBe('whisper')
-    expect(MODEL_NAMES.LLAMA3).toBe('llama3')
     expect(MODEL_NAMES.PHOTOMAKER).toBe('photomaker')
     expect(MODEL_NAMES.FLUX).toBe('flux')
-    expect(MODEL_NAMES.GRANITE).toBe('granite')
     expect(MODEL_NAMES.BGE_MULTILINGUAL_GEMMA2).toBe('bge_multilingual_gemma2')
     expect(MODEL_NAMES.MINI_LM_L12_V2).toBe('mini_lm_l12_v2')
-    expect(MODEL_NAMES.MISTRAL3).toBe('mistral3')
-    expect(MODEL_NAMES.QWEN3).toBe('qwen3')
-    expect(MODEL_NAMES.GEMMA3N).toBe('gemma3n')
+    expect(MODEL_NAMES['SWISS-AI/APERTUS-70B-INSTRUCT-2509']).toBe('swiss-ai/Apertus-70B-Instruct-2509')
+    expect(MODEL_NAMES['QWEN/QWEN3-EMBEDDING-8B']).toBe('Qwen/Qwen3-Embedding-8B')
+    expect(MODEL_NAMES['BAAI/BGE-RERANKER-V2-M3']).toBe('BAAI/bge-reranker-v2-m3')
+    expect(MODEL_NAMES['QWEN/QWEN3-RERANKER-0.6B']).toBe('Qwen/Qwen3-Reranker-0.6B')
+    expect(MODEL_NAMES['MISTRALAI/MINISTRAL-3-14B-INSTRUCT-2512']).toBe('mistralai/Ministral-3-14B-Instruct-2512')
+    expect(MODEL_NAMES['QWEN/QWEN3.5-122B-A10B-FP8']).toBe('Qwen/Qwen3.5-122B-A10B-FP8')
+    expect(MODEL_NAMES['GOOGLE/GEMMA-4-31B-IT']).toBe('google/gemma-4-31B-it')
+    expect(MODEL_NAMES['MOONSHOTAI/KIMI-K2.6']).toBe('moonshotai/Kimi-K2.6')
   })
 
   it('getModelsByType returns empty array for unknown type', () => {
